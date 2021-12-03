@@ -1,0 +1,36 @@
+{% extends 'working/html/base.html' %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static './index_new.css' %}">
+{% if is_authenticated %}
+<h1 class="greet">Welcome Vikas</h1>
+{% endif %}
+<div class="main-div ">
+    <h1 class="greet">Welcome </h1>
+    <div class="body-discription">
+        <h2>
+            Manage over time with us of your of self or <br> your fellow employees. <br>
+            In easy manner & organised
+        </h2>
+        <p class="about">A simple way to make your self organised and hasel free work enviroment, <br> 
+            we got you cover everything the userfrendly <br> 
+            interface to manage your time.</p>
+        <a class= "a-emp-home" href="{% url 'add_employee' %}"><button class = "btn btn-primary start a-emp-home" > Get Started</button></a>
+
+    </div>
+    <div class="div-log">
+        <div class="child_div">
+            child div
+        </div>
+        <div class="snd_child">
+            <h5>{{request.user}}</h5>
+        </div>
+                                     
+        <div class="third_child">
+            <p>Total Team Member : {{total_employee}}</p>
+        </div>
+        
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,22 @@
+body{
+    background-image: url(new.jpg);
+}
+
+.register{
+    position: relative;
+    justify-content: center;
+    height: 700px;
+    width: 1000px;
+    border-radius: 20px;
+    margin-left: 23%;  
+    margin-top:5%;  
+    padding:3rem;
+    box-shadow: -5px 10px 20px rgb(186, 186, 189);
+    backdrop-filter: blur(3px);
+    
+}
+
+
+.color{
+    color:white;
+}
