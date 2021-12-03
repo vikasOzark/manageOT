@@ -11,13 +11,35 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def index(request):
-    total_emp = Employee.objects.filter(user = request.user)
+    if request.user.is_authenticated:
+        total_ot = 0
 
-    total_empl = 0
-    for total in total_emp:
-        total_empl += 1
+        total_emp = Employee.objects.filter(user = request.user)
+        for emp in total_emp:
+            overtime = [ot for ot in OverTime.objects.all() if ot.emp_user == emp]
+            if  overtime:
+                for time in overtime:
+                    total_ot += time.overTime
+
+        print('total ot : ',total_ot)
+
+    try:
+        total_emp = Employee.objects.filter(user = request.user)
+        print('total emp :: ',total_emp)
+
+        total_empl = 0
+        for total in total_emp:
+            total_empl += 1
+
+    except:
+        total_empl = 0
+        total_ot = 0
+    
+    
+
     context = {
-        'total_employee' : total_empl
+        'total_employee' : total_empl,
+        'total_ot' : total_ot,
     }
 
     return render(request, 'working/html/index.html', context)
@@ -36,22 +58,6 @@ def logOut(request):
     auth_logout(request)
     return redirect('/')
 
-def adminPage(request):
-    forms = OverTimeAdd(request.GET)
-    fm_emp = OverTimeAdd.emp_user(request.user)
-
-    if request.method == "GET":
-        if forms.is_valid():
-            forms.save()
-
-    contex = {   
-
-        'forms': forms,
-        'fm_emp' : fm_emp
-    }
-
-    return render(request, 'working/html/admin_page.html', contex)
-
 
 def signUp(request):
     if request.method == 'POST':
@@ -67,7 +73,7 @@ def signUp(request):
             email=email,
             password=pass_1
         )
-        
+
         user.save()
         print(f_name)
         return redirect('/')

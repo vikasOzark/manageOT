@@ -67,24 +67,26 @@ body{
 .div-log{
     position: relative;
     display:block;
-    background-color: cadetblue;
+
+
 }
 
 .child_div{
     position: relative;
-    display: block;
-    background-color: rgb(88, 255, 171);
-    height: 6rem;
-    width: 6rem;
+    display: inline-block;
+    height: auto;
+    margin-top:2rem;
+    left: 2em;
+    width: auto;
 }
 .snd_child{
     position: relative;
     display: inline-block;
-    left: 5rem;
-    height: 4rem;
+    left: 3rem;
+    height: auto;
     text-align: center;
-    width: 8rem;
-    background-color: rgb(241, 41, 148);
+    width: auto;
+    text-transform: capitalize;
 }
 
 .snd_child h5{
@@ -94,7 +96,11 @@ body{
 
 .third_child{
     position: relative;
-    background-color: rgb(240, 191, 29);
-    top: 5rem;
+    display: block;
+    top: 1rem;
+    left: 2em;
+    width: auto;
+    height: auto;
+
 }
 

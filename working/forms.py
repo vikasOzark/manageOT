@@ -38,7 +38,6 @@ class CreateEmployeeForm(forms.ModelForm):
             'emp_l_name',
             'emp_email',
             'emp_number',
-            'emp_profile',
         ]
 
         widgets = {
